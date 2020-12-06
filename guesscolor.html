@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <title>Guess the color</title>
+    <style>
+        #main {
+            background-color: rgb(238, 226, 226);
+            border: 1px solid black;
+            margin-top: 40px;
+            margin-left: 140px;
+            margin-right: 140px;
+            height: 80%;
+            padding-left: 20px;
+            text-align: center;
+        }
+
+        .bcolor {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <h1>Guess the color !</h2>
+            <h2 id="que"></h2>
+            <div id="bttn">
+                <button class="bcolor"></button>
+                <button class="bcolor"></button>
+                <button class="bcolor"></button>
+                <button class="bcolor"></button>
+                <button class="bcolor"></button>
+                <button class="bcolor"></button>
+
+            </div>
+            <h1 id="res">
+                </h2>
+                <button id="reset" onclick="start()">Reset game</button>
+    </div>
+    <script>
+        function start() {
+            document.getElementById('res').innerText = ""
+
+
+            var bttns = document.getElementsByClassName('bcolor')
+            console.log(bttns);
+            var ran = Math.round(Math.random() * (bttns.length - 1))
+
+            for (i = 0; i < bttns.length; i++) {
+                red = Math.round(Math.random() * 255)
+                green = Math.round(Math.random() * 255)
+                blue = Math.round(Math.random() * 255)
+                col(i, red, green, blue)
+
+                if (i === ran) {
+                    document.getElementById('que').innerText = `(${red},${green},${blue})`
+                    //   ans="rgb(`${red}+","+${green}+","+${blue}`)"
+                }
+                bttns[i].addEventListener('click', function () {
+                    if (this === bttns[ran]) {
+                        document.getElementById('res').innerText = "Correct!"
+                    }
+                    else {
+                        document.getElementById('res').innerText = "wrong! try again"
+                    }
+                })
+
+            }
+            function col(i, r, g, b) {
+
+
+                console.log(`${r},${g},${b}`);
+                // document.getElementById('reset').setAttribute('style',"background-color:rgb(`${r},${g},${b}`)")
+                // document.getElementById('reset').setAttribute('style',"background-color:rgb(89,47,79)")
+                // bttns[i].setAttribute('style',"background-color: rgb('+ r +','+ g +','+b+'); ")
+                bttns[i].style.background = "rgb("+ r +','+ g +','+b+")"
+
+
+
+            }
+        }
+        start()
+    </script>
+</body>
+
+</html>
