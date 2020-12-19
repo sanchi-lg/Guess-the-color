@@ -23,7 +23,6 @@ We can also reset the game
   <br/>
   <img src="guesscolor4.JPG">
   <br/>
-  <img src="guesscolor5.JPG">
-  <br/>
+
 </p>
 
